@@ -1,0 +1,17 @@
+asgiref==3.11.1
+Django==6.0.5
+django-cors-headers==4.9.0
+django-filter==25.2
+djangorestframework==3.17.1
+djangorestframework_simplejwt==5.5.1
+mysqlclient==2.2.8
+pillow==12.2.0
+PyJWT==2.12.1
+PyMySQL==1.1.3
+sqlparse==0.5.5
+tzdata==2026.2
+python-dotenv==1.0.0
+icalendar==5.1.5
+channels==4.1.0
+daphne==4.1.2
+razorpay==2.0.0
