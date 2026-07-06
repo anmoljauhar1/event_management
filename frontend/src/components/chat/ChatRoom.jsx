@@ -21,16 +21,30 @@ const ChatRoom = ({ roomId: propRoomId, organizerUsername }) => {
 
   useEffect(() => {
     if (!roomId) return;
-    
-    fetchMessages(roomId);
-    
-    // WebSocket connection
+
+    const fetchMessages = async () => {
+      try {
+        const { data } = await getChatMessages(roomId);
+        setMessages(data);
+      } catch (err) {
+        console.error('Failed to fetch messages:', err);
+      }
+    };
+
+    fetchMessages();
+
     const ws = new WebSocket(`${WS_URL}/ws/chat/${roomId}/`);
     socketRef.current = ws;
-    
+
     ws.onmessage = (e) => {
-      const data = JSON.parse(e.data);
-      setMessages(prev => [...prev, { ...data, id: Date.now() }]);
+      try {
+        const incoming = JSON.parse(e.data);
+        if (incoming?.message || incoming?.content) {
+          setMessages((prev) => [...prev, incoming]);
+        }
+      } catch (error) {
+        console.error('Invalid chat payload:', error);
+      }
     };
 
     return () => {
@@ -43,15 +57,6 @@ const ChatRoom = ({ roomId: propRoomId, organizerUsername }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
-  async function fetchMessages(id) {
-    try {
-      const { data } = await getChatMessages(id);
-      setMessages(data);
-    } catch (err) {
-      console.error('Failed to fetch messages:', err);
-    }
-  }
 
   const sendMessage = () => {
     if (input.trim() && socketRef.current?.readyState === WebSocket.OPEN) {
@@ -74,14 +79,12 @@ const ChatRoom = ({ roomId: propRoomId, organizerUsername }) => {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 dark:bg-slate-950">
+      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-surface-light">
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center px-4">
-            <div className="p-3 bg-indigo-50 dark:bg-indigo-950/40 rounded-full mb-3 text-indigo-600 dark:text-indigo-400">
-              💬
-            </div>
-            <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">No messages yet</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-[200px]">
+            <div className="mb-3 text-3xl">💬</div>
+            <p className="text-sm font-semibold text-primary">No messages yet</p>
+            <p className="text-xs text-muted mt-1 max-w-[200px]">
               Be the first to start the conversation about this event!
             </p>
           </div>
@@ -95,23 +98,21 @@ const ChatRoom = ({ roomId: propRoomId, organizerUsername }) => {
                 className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
               >
                 <div className="flex items-center space-x-1.5 mb-1">
-                  <span className="text-xs font-bold text-gray-600 dark:text-gray-400">
-                    {msg.sender}
-                  </span>
+                  <span className="text-xs font-bold text-secondary">{msg.sender}</span>
                   {isOrganizer && (
-                    <span className="bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider">
+                    <span className="bg-warning text-warning px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider">
                       Host
                     </span>
                   )}
-                  <span className="text-[10px] text-gray-400 dark:text-gray-500">
+                  <span className="text-[10px] text-muted">
                     {msg.timestamp ? msg.timestamp.split(' ')[1] || msg.timestamp : ''}
                   </span>
                 </div>
                 <div
                   className={`px-4 py-2.5 rounded-2xl max-w-xs md:max-w-md text-sm shadow-sm transition-all break-words ${
                     isMe
-                      ? 'bg-indigo-600 text-white rounded-tr-none'
-                      : 'bg-gray-100 dark:bg-slate-800 text-gray-800 dark:text-gray-200 rounded-tl-none'
+                      ? 'bg-primary text-white rounded-tr-none'
+                      : 'bg-surface text-primary rounded-tl-none'
                   }`}
                 >
                   <p className="leading-relaxed">{msg.message || msg.content}</p>

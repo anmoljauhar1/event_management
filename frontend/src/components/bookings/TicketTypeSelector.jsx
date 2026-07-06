@@ -44,7 +44,7 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-extrabold text-gray-900 dark:text-white flex items-center">
-          <SparklesIcon className="h-5 w-5 text-indigo-500 mr-2" />
+          <SparklesIcon className="h-5 w-5 text-primary mr-2" />
           Choose Your Tickets
         </h3>
         <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
@@ -61,7 +61,7 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
               key={tt.id}
               className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 rounded-3xl border transition-all duration-300 ${
                 currentQty > 0
-                  ? 'border-indigo-600 bg-indigo-50/10 dark:bg-indigo-950/10'
+                  ? 'border-primary-600 bg-accent-10 dark:bg-surface-dark/10'
                   : 'border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900'
               }`}
             >
@@ -70,7 +70,7 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
                   {tt.name}
                 </p>
                 <div className="flex items-center space-x-3 mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  <span className="font-black text-indigo-600 dark:text-indigo-400 text-lg">
+                  <span className="font-black text-primary-600 dark:text-primary-300 text-lg">
                     {tt.price > 0 ? `₹${tt.price}` : 'Free'}
                   </span>
                   <span>•</span>
@@ -88,7 +88,7 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
                   className={`p-2 rounded-full border transition-all transform active:scale-90 ${
                     currentQty === 0
                       ? 'border-gray-200 text-gray-300 dark:border-slate-800 dark:text-slate-700 cursor-not-allowed'
-                      : 'border-indigo-600 text-indigo-600 bg-white hover:bg-indigo-50 dark:bg-slate-950 dark:text-indigo-400 dark:hover:bg-indigo-950/40'
+                      : 'border-primary-600 text-primary-600 bg-white hover:bg-primary-10 dark:bg-slate-950 dark:text-primary-300 dark:hover:bg-surface-dark/10'
                   }`}
                 >
                   <MinusIcon className="h-5 w-5" />
@@ -104,7 +104,7 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
                   className={`p-2 rounded-full border transition-all transform active:scale-90 ${
                     isMaxReached
                       ? 'border-gray-200 text-gray-300 dark:border-slate-800 dark:text-slate-700 cursor-not-allowed'
-                      : 'border-indigo-600 text-indigo-600 bg-white hover:bg-indigo-50 dark:bg-slate-950 dark:text-indigo-400 dark:hover:bg-indigo-950/40'
+                      : 'border-primary-600 text-primary-600 bg-white hover:bg-primary-10 dark:bg-slate-950 dark:text-primary-300 dark:hover:bg-surface-dark/10'
                   }`}
                 >
                   <PlusIcon className="h-5 w-5" />
@@ -117,24 +117,19 @@ const TicketTypeSelector = ({ ticketTypes, onProceed }) => {
 
       {/* Live Total / Proceed Widget */}
       {totalQty > 0 && (
-        <div className="p-6 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl text-white shadow-xl space-y-4 transform scale-100 transition-all duration-300 animate-fadeIn">
+        <div className="p-6 bg-gradient-to-br from-primary to-accent rounded-3xl text-white shadow-xl space-y-4 transform scale-100 transition-all duration-300 animate-fadeIn">
           <div className="flex justify-between items-center border-b border-white/20 pb-3">
             <div>
-              <p className="text-xs text-indigo-200 font-bold uppercase tracking-widest">Order Summary</p>
+              <p className="text-xs text-accent-300 font-bold uppercase tracking-widest">Order Summary</p>
               <p className="text-sm font-semibold mt-0.5">{totalQty} tickets selected</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-indigo-200 font-bold uppercase tracking-widest">Total Price</p>
+              <p className="text-xs text-accent-300 font-bold uppercase tracking-widest">Total Price</p>
               <p className="text-2xl font-black">₹{totalPrice}</p>
             </div>
           </div>
 
-          <button
-            onClick={handleSubmit}
-            className="w-full py-3 bg-white text-indigo-700 hover:bg-indigo-50 font-black rounded-full shadow-lg transform active:scale-98 transition-all duration-200"
-          >
-            Proceed to Checkout &rarr;
-          </button>
+          <button onClick={handleSubmit} className="w-full py-3 bg-primary text-white hover:bg-primary-600 font-black rounded-full shadow-lg transform active:scale-98 transition-all duration-200">Proceed to Checkout &rarr;</button>
         </div>
       )}
     </div>

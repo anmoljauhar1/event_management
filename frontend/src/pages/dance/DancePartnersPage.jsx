@@ -119,7 +119,7 @@ const DancePartnersPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950">
         <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
           <p className="text-gray-400 font-medium">Entering Dance Hub...</p>
         </div>
       </div>
@@ -130,31 +130,26 @@ const DancePartnersPage = () => {
     <div className="min-h-screen bg-slate-950 text-slate-100 transition-colors duration-500 pb-16">
       
       {/* Dynamic Glowing Background Blobs */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-900/20 rounded-full filter blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-900/20 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent-700/20 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent-700/20 rounded-full filter blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 relative z-10">
         
         {/* Breadcrumb Navigation */}
         <div className="mb-8">
-          <Link
-            to="/events"
-            className="inline-flex items-center text-xs font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition-all"
-          >
-            &larr; Back to Discovery desk
-          </Link>
+          <Link to="/events" className="inline-flex items-center text-xs font-black uppercase tracking-wider text-accent-300 hover:text-accent-200 transition-all">&larr; Back to Discovery desk</Link>
         </div>
 
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl mb-12">
+        <div className="relative overflow-hidden bg-gradient-to-br from-surface-dark via-primary-700 to-accent-700 rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl mb-12">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full mix-blend-overlay filter blur-xl pointer-events-none"></div>
           
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 mb-6">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-accent-500/10 text-accent-300 border border-accent-500/20 mb-6">
             <SparklesIcon className="h-4 w-4 mr-1.5 animate-pulse" />
             Club Nights & Live Artists
           </span>
           
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight max-w-3xl mb-4 bg-gradient-to-r from-white via-indigo-200 to-purple-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight max-w-3xl mb-4 bg-gradient-to-r from-white via-accent-200 to-accent-300 bg-clip-text text-transparent">
             Dance Partner Registry — Book an Artist to Join the Night!
           </h1>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed mb-8">
@@ -162,12 +157,7 @@ const DancePartnersPage = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 items-center">
-            <a
-              href="#partners-grid"
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-black text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-indigo-500/20"
-            >
-              Browse Dance Partners &darr;
-            </a>
+            <a href="#partners-grid" className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-full font-black text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-primary-500/20">Browse Dance Partners &darr;</a>
             {myBookings.length > 0 && (
               <a
                 href="#my-bookings"
@@ -184,7 +174,7 @@ const DancePartnersPage = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
             <div>
               <h2 className="text-2xl font-extrabold text-white flex items-center">
-                <UserGroupIcon className="h-6 w-6 text-indigo-400 mr-2" />
+                <UserGroupIcon className="h-6 w-6 text-accent-300 mr-2" />
                 Verified Professional Dancers
               </h2>
               <p className="text-xs text-slate-400 mt-1">Hire top-rated dance experts to elevate your party experience.</p>
@@ -204,7 +194,7 @@ const DancePartnersPage = () => {
                 className="bg-slate-900/60 backdrop-blur-md overflow-hidden rounded-3xl border border-slate-800 hover:border-slate-700 transition-all duration-300 shadow-xl flex flex-col group"
               >
                 {/* Image & Style tag */}
-                <div className="relative h-56 w-full overflow-hidden bg-slate-950">
+                  <div className="relative h-56 w-full overflow-hidden bg-slate-950">
                   <img
                     src={dancer.avatar_url || 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=300&h=300'}
                     alt={dancer.name}
@@ -212,7 +202,7 @@ const DancePartnersPage = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                   
-                  <span className="absolute bottom-4 left-4 inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white shadow-lg">
+                  <span className="absolute bottom-4 left-4 inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-accent-500 text-white shadow-lg">
                     {dancer.style}
                   </span>
                 </div>
@@ -221,7 +211,7 @@ const DancePartnersPage = () => {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="font-extrabold text-white text-lg group-hover:text-indigo-400 transition-colors">
+                      <h3 className="font-extrabold text-white text-lg group-hover:text-accent-300 transition-colors">
                         {dancer.name}
                       </h3>
                       <div className="flex items-center text-xs font-bold text-amber-400">
@@ -244,12 +234,7 @@ const DancePartnersPage = () => {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => handleOpenBooking(dancer)}
-                      className="w-full py-2.5 bg-slate-800 hover:bg-indigo-600 text-white rounded-full font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 shadow"
-                    >
-                      Book Partner to Join &rarr;
-                    </button>
+                    <button onClick={() => handleOpenBooking(dancer)} className="w-full py-2.5 bg-slate-800 hover:bg-primary-600 text-white rounded-full font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 shadow">Book Partner to Join &rarr;</button>
                   </div>
                 </div>
               </div>
@@ -281,7 +266,7 @@ const DancePartnersPage = () => {
                     />
                     <div>
                       <h4 className="font-extrabold text-white text-sm">{b.partner_details?.name}</h4>
-                      <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">{b.partner_details?.style}</p>
+                      <p className="text-[10px] font-bold text-accent-300 uppercase tracking-widest">{b.partner_details?.style}</p>
                     </div>
                   </div>
 

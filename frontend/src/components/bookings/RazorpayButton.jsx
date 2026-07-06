@@ -9,6 +9,7 @@ const RazorpayButton = ({ bookingId, bookingType, amount, onSuccess }) => {
   const displayRazorpay = async () => {
     if (!amount || amount <= 0) return;
     setLoading(true);
+    const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#1B2E7C';
     try {
       const { data: orderData } = await createPaymentOrder({
         booking_id: bookingId,
@@ -41,7 +42,7 @@ const RazorpayButton = ({ bookingId, bookingType, amount, onSuccess }) => {
           email: user?.user?.email || '',
         },
         theme: {
-          color: '#4F46E5',
+          color: themeColor,
         },
       };
 
@@ -58,9 +59,11 @@ const RazorpayButton = ({ bookingId, bookingType, amount, onSuccess }) => {
     <button
       onClick={displayRazorpay}
       disabled={loading}
-      className={`w-full py-3 rounded-lg text-white font-semibold ${
-        loading ? 'bg-gray-400' : 'bg-indigo-600 hover:bg-indigo-700'
-      }`}
+      className={`w-full py-3 rounded-xl font-semibold ${loading ? 'text-muted cursor-not-allowed' : 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-primary/20'}`}
+      style={{
+        transition: 'all 220ms ease',
+        backgroundColor: loading ? 'rgba(255,255,255,0.14)' : undefined,
+      }}
     >
       {loading ? 'Processing...' : 'Pay Now'}
     </button>

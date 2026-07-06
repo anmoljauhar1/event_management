@@ -67,7 +67,7 @@ const EventBookingPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
           <p className="text-gray-500 dark:text-gray-400 font-medium">Preparing booking desk...</p>
         </div>
       </div>
@@ -99,10 +99,7 @@ const EventBookingPage = () => {
       <div className="max-w-4xl mx-auto">
         
         {/* Navigation Breadcrumb */}
-        <Link
-          to={`/events/${id}`}
-          className="inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline mb-6 transition-all"
-        >
+        <Link to={`/events/${id}`} className="inline-flex items-center text-sm font-semibold text-primary-500 dark:text-primary-300 hover:underline mb-6 transition-all">
           &larr; Back to event overview
         </Link>
 
@@ -114,7 +111,7 @@ const EventBookingPage = () => {
             
             {/* Event Summary Widget */}
             <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-gray-100 dark:border-slate-800 space-y-4">
-              <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+              <span className="text-[10px] font-black uppercase tracking-widest text-primary-500 dark:text-primary-300">
                 Booking Desk
               </span>
               <h2 className="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
@@ -126,27 +123,27 @@ const EventBookingPage = () => {
               
               <div className="space-y-3 pt-4 border-t dark:border-slate-800 text-xs font-semibold text-gray-600 dark:text-gray-400">
                 <div className="flex items-center">
-                  <CalendarIcon className="h-4.5 w-4.5 text-indigo-500 mr-2" />
+                  <CalendarIcon className="h-4.5 w-4.5 text-primary-500 mr-2" />
                   <span>{event.date}</span>
                 </div>
                 <div className="flex items-center">
-                  <ClockIcon className="h-4.5 w-4.5 text-indigo-500 mr-2" />
+                  <ClockIcon className="h-4.5 w-4.5 text-primary-500 mr-2" />
                   <span>{event.time}</span>
                 </div>
                 <div className="flex items-center">
-                  <MapPinIcon className="h-4.5 w-4.5 text-indigo-500 mr-2" />
+                  <MapPinIcon className="h-4.5 w-4.5 text-primary-500 mr-2" />
                   <span className="truncate">{event.location}</span>
                 </div>
                 <div className="flex items-center">
-                  <TicketIcon className="h-4.5 w-4.5 text-indigo-500 mr-2" />
+                  <TicketIcon className="h-4.5 w-4.5 text-primary-500 mr-2" />
                   <span className="truncate font-bold">{event.price && parseFloat(event.price) > 0 ? `₹${event.price}` : 'Free'}</span>
                 </div>
               </div>
             </div>
 
             {/* Security Proof Card */}
-            <div className="bg-indigo-50 dark:bg-indigo-950/20 rounded-3xl p-5 border border-indigo-100/50 dark:border-slate-900/60 flex items-start">
-              <ShieldCheckIcon className="h-8 w-8 text-indigo-600 dark:text-indigo-400 mr-3 flex-shrink-0" />
+            <div className="bg-surface-light dark:bg-surface-dark/20 rounded-3xl p-5 border border-slate-100 dark:border-slate-900/60 flex items-start">
+              <ShieldCheckIcon className="h-8 w-8 text-primary-500 dark:text-primary-300 mr-3 flex-shrink-0" />
               <div>
                 <h4 className="text-xs font-black text-gray-800 dark:text-gray-200 uppercase tracking-wider">Secure Booking</h4>
                 <p className="text-[10px] text-gray-500 dark:text-gray-400 leading-normal mt-0.5">
@@ -181,32 +178,17 @@ const EventBookingPage = () => {
                     {event?.is_owner ? (
                       <div className="space-y-2">
                         <p className="text-xs text-gray-500">You are the organizer — add ticket types to accept bookings.</p>
-                        <Link
-                          to={`/events/${id}/edit`}
-                          className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-full font-semibold text-sm hover:bg-indigo-700"
-                        >
-                          Manage Ticket Types
-                        </Link>
+                        <Link to={`/events/${id}/edit`} className="inline-flex items-center px-4 py-2 bg-primary-500 text-white rounded-full font-semibold text-sm hover:bg-primary-600">Manage Ticket Types</Link>
                       </div>
                     ) : user ? (
                       <div className="space-y-2">
                         <p className="text-xs text-gray-500">Message the host to request ticket availability.</p>
-                        <Link
-                          to={`/events/${id}`}
-                          className="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full font-semibold text-sm hover:bg-indigo-100"
-                        >
-                          Message Organizer
-                        </Link>
+                        <Link to={`/events/${id}`} className="inline-flex items-center px-4 py-2 bg-white dark:bg-surface-dark text-primary-700 rounded-full font-semibold text-sm hover:bg-primary-50">Message Organizer</Link>
                       </div>
                     ) : (
                       <div className="space-y-2">
                         <p className="text-xs text-gray-500">Log in to contact the organizer about tickets.</p>
-                        <Link
-                          to="/login"
-                          className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-full font-semibold text-sm hover:bg-indigo-700"
-                        >
-                          Log in to Contact
-                        </Link>
+                        <Link to="/login" className="inline-flex items-center px-4 py-2 bg-primary-500 text-white rounded-full font-semibold text-sm hover:bg-primary-600">Log in to Contact</Link>
                       </div>
                     )}
                   </div>

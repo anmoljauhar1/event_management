@@ -80,7 +80,7 @@ const BookingDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
           <p className="text-gray-500 dark:text-gray-400 font-medium">Fetching your ticket details...</p>
         </div>
       </div>
@@ -94,7 +94,7 @@ const BookingDetail = () => {
           <div className="text-4xl mb-4">🎫</div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ticket Not Found</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">We couldn't retrieve the details for this booking.</p>
-          <Link to="/bookings" className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2.5 rounded-full transition-all">
+          <Link to="/bookings" className="inline-block bg-primary hover:bg-primary-600 text-white font-bold px-6 py-2.5 rounded-full transition-all">
             Back to My Bookings
           </Link>
         </div>
@@ -109,10 +109,7 @@ const BookingDetail = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-500 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         {/* Navigation breadcrumb */}
-        <Link
-          to="/bookings"
-          className="inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline mb-6 transition-all"
-        >
+        <Link to="/bookings" className="inline-flex items-center text-sm font-semibold text-primary-500 dark:text-primary-300 hover:underline mb-6 transition-all">
           &larr; Back to My Bookings
         </Link>
 
@@ -146,7 +143,7 @@ const BookingDetail = () => {
             {/* Grid Specifications */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-b dark:border-slate-800 pb-8">
               <div className="flex items-center">
-                <CalendarIcon className="h-10 w-10 text-indigo-500 mr-3" />
+                <CalendarIcon className="h-10 w-10 text-primary-500 mr-3" />
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-black tracking-wider">Date</p>
                   <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">{booking.event_date}</p>
@@ -154,7 +151,7 @@ const BookingDetail = () => {
               </div>
 
               <div className="flex items-center">
-                <MapPinIcon className="h-10 w-10 text-indigo-500 mr-3" />
+                <MapPinIcon className="h-10 w-10 text-primary-500 mr-3" />
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-black tracking-wider">Location</p>
                   <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate max-w-[150px]">{booking.event_location || 'Online'}</p>
@@ -162,7 +159,7 @@ const BookingDetail = () => {
               </div>
 
               <div className="flex items-center">
-                <QrCodeIcon className="h-10 w-10 text-indigo-500 mr-3" />
+                <QrCodeIcon className="h-10 w-10 text-primary-500 mr-3" />
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-black tracking-wider">Booking ID</p>
                   <p className="text-sm font-mono font-semibold text-gray-800 dark:text-gray-200">{booking.booking_id.slice(0, 8)}...</p>
@@ -181,7 +178,7 @@ const BookingDetail = () => {
                         <p className="font-bold text-gray-800 dark:text-gray-200 text-sm">{item.ticket_type.name}</p>
                         <p className="text-xs text-gray-400 mt-0.5">Quantity: {item.quantity}</p>
                       </div>
-                      <span className="font-extrabold text-indigo-600 dark:text-indigo-400">₹{item.unit_price * item.quantity}</span>
+                      <span className="font-extrabold text-primary-600 dark:text-primary-300">₹{item.unit_price * item.quantity}</span>
                     </li>
                   ))}
                 </ul>
@@ -189,7 +186,7 @@ const BookingDetail = () => {
                 {/* Total Billing */}
                 <div className="flex justify-between items-center border-t dark:border-slate-800 pt-4 mt-4 font-black">
                   <span className="text-sm text-gray-500 dark:text-gray-400">Total Price</span>
-                  <span className="text-xl text-indigo-600 dark:text-indigo-400">₹{booking.total_amount}</span>
+                  <span className="text-xl text-primary-600 dark:text-primary-300">₹{booking.total_amount}</span>
                 </div>
               </div>
             </div>
@@ -221,16 +218,13 @@ const BookingDetail = () => {
 
                 {/* Confirmations & Exports */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <button
-                    onClick={handleDownloadQR}
-                    className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold shadow-lg shadow-indigo-100 dark:shadow-none hover:shadow-indigo-200 transition-all transform active:scale-98"
-                  >
+                  <button onClick={handleDownloadQR} className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-primary-600 text-white rounded-full font-bold shadow-lg transition-all transform active:scale-98">
                     <ArrowDownTrayIcon className="h-5 w-5 mr-2" />
                     Save Ticket PDF
                   </button>
                   <button
                     onClick={handleCalendar}
-                    className="inline-flex items-center justify-center px-6 py-3 border border-indigo-600/30 text-indigo-600 dark:text-indigo-400 bg-white hover:bg-indigo-50 dark:bg-slate-900 dark:hover:bg-slate-800/40 rounded-full font-bold transition-all transform active:scale-98"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-primary-600/30 text-primary-600 dark:text-primary-300 bg-white hover:bg-primary-10 dark:bg-slate-900 dark:hover:bg-slate-800/40 rounded-full font-bold transition-all transform active:scale-98"
                   >
                     <CalendarDaysIcon className="h-5 w-5 mr-2" />
                     Add to Calendar

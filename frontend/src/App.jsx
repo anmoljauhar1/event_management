@@ -27,14 +27,14 @@ const AppContent = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 flex flex-col">
       <Navbar />
       <main className="flex-grow">
         <Routes>
@@ -78,33 +78,33 @@ const AppContent = () => {
       </main>
       
       {/* Premium Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 dark:bg-gray-800 text-white dark:text-gray-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <span className="text-2xl font-bold text-indigo-400">EventPro</span>
-              <p className="mt-4 text-gray-400 max-w-xs">
+              <span className="text-2xl font-bold text-primary-300">EventPro</span>
+              <p className="mt-4 text-gray-400 dark:text-gray-300 max-w-xs">
                 The ultimate platform for discovering and managing events. Making every gathering unforgettable.
               </p>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/events" className="hover:text-indigo-400">Browse Events</a></li>
-                <li><a href="/halls" className="hover:text-indigo-400">Venues</a></li>
+              <ul className="space-y-2 text-gray-400 dark:text-gray-300">
+                <li><a href="/events" className="hover:text-accent-300">Browse Events</a></li>
+                <li><a href="/halls" className="hover:text-accent-300">Venues</a></li>
                 {user?.role === 'admin' ? (
-                  <li><a href="/events/create" className="hover:text-indigo-400">Host an Event</a></li>
+                  <li><a href="/events/create" className="hover:text-primary-300">Host an Event</a></li>
                 ) : (
-                  <li><a href="/events" className="hover:text-indigo-400">Explore Events</a></li>
+                  <li><a href="/events" className="hover:text-primary-300">Explore Events</a></li>
                 )}
               </ul>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">Account</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/profile" className="hover:text-indigo-400">Profile</a></li>
-                <li><a href="/dashboard" className="hover:text-indigo-400">Dashboard</a></li>
-                <li><a href="/bookings" className="hover:text-indigo-400">My Bookings</a></li>
+              <ul className="space-y-2 text-gray-400 dark:text-gray-300">
+                <li><a href="/profile" className="hover:text-accent-300">Profile</a></li>
+                <li><a href="/dashboard" className="hover:text-accent-300">Dashboard</a></li>
+                <li><a href="/bookings" className="hover:text-accent-300">My Bookings</a></li>
               </ul>
             </div>
           </div>

@@ -22,7 +22,7 @@ const EventCard = ({ event, onLikeChange }) => {
   };
 
   return (
-    <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
+    <div className="group bg-[color:var(--surface)] rounded-2xl shadow-sm hover:shadow-[var(--shadow)] transition-all duration-300 overflow-hidden border border-[color:var(--border)] flex flex-col h-full">
       <Link to={`/events/${event.id}`} className="flex-grow">
         <div className="h-52 bg-gray-200 relative overflow-hidden">
           {event.first_image ? (
@@ -32,7 +32,7 @@ const EventCard = ({ event, onLikeChange }) => {
               className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 bg-gradient-to-br from-gray-100 to-gray-200">
+            <div className="flex items-center justify-center h-full text-[color:var(--text-muted)] bg-gradient-to-br from-[color:rgba(var(--primary),0.08)] to-[color:rgba(var(--accent),0.16)]">
               <span className="text-sm font-medium">No Image Available</span>
             </div>
           )}
@@ -43,7 +43,7 @@ const EventCard = ({ event, onLikeChange }) => {
           {user && (
             <button
               onClick={handleLike}
-              className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-all transform hover:scale-110 z-10"
+              className="absolute top-3 right-3 p-2 bg-[color:var(--surface-glass)] backdrop-blur-sm rounded-full shadow-lg hover:bg-[color:var(--surface)] transition-all transform hover:scale-110 z-10"
             >
               {event.is_liked ? (
                 <SolidHeart className="h-5 w-5 text-red-500" />
@@ -54,11 +54,11 @@ const EventCard = ({ event, onLikeChange }) => {
           )}
           
           <div className="absolute bottom-3 left-3 flex gap-2">
-             <span className="text-[10px] font-bold uppercase tracking-widest bg-indigo-600 text-white px-2 py-1 rounded-md shadow-sm">
+             <span className="text-[10px] font-bold uppercase tracking-widest bg-[color:var(--primary)] text-[color:var(--text-primary)] px-2 py-1 rounded-md shadow-sm">
                 {event.category}
               </span>
               {event.is_private && (
-                <span className="text-[10px] font-bold uppercase tracking-widest bg-slate-800 text-slate-100 px-2 py-1 rounded-md shadow-sm border border-slate-700">
+                <span className="text-[10px] font-bold uppercase tracking-widest bg-[color:var(--surface-elevated)] text-[color:var(--text-secondary)] px-2 py-1 rounded-md shadow-sm border border-[color:var(--border)]">
                   🔒 Private
                 </span>
               )}
@@ -66,36 +66,36 @@ const EventCard = ({ event, onLikeChange }) => {
         </div>
 
         <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors line-clamp-1">
+          <h3 className="text-xl font-bold text-[color:var(--text-primary)] mb-3 group-hover:text-[color:var(--primary)] transition-colors line-clamp-1">
             {event.title}
           </h3>
 
           <div className="space-y-3 mb-4">
             <div className="flex items-center text-gray-500 text-sm">
-              <CalendarIcon className="h-4 w-4 mr-2 text-indigo-500" />
+              <CalendarIcon className="h-4 w-4 mr-2 text-[color:var(--accent)]" />
               <span>{event.date} • {event.time}</span>
             </div>
 
             <div className="flex items-center text-gray-500 text-sm">
-              <MapPinIcon className="h-4 w-4 mr-2 text-indigo-500" />
+              <MapPinIcon className="h-4 w-4 mr-2 text-[color:var(--accent)]" />
               <span className="line-clamp-1">{event.location}</span>
             </div>
             
             <div className="flex items-center text-gray-500 text-sm">
-              <UserGroupIcon className="h-4 w-4 mr-2 text-indigo-500" />
+              <UserGroupIcon className="h-4 w-4 mr-2 text-[color:var(--accent)]" />
               <span>{event.likes_count} people interested</span>
             </div>
           </div>
         </div>
       </Link>
       
-      <div className="px-5 py-4 border-t border-gray-50 bg-gray-50/50 flex justify-between items-center">
-        <span className="text-indigo-600 font-bold">
+      <div className="px-5 py-4 border-t border-[color:var(--border)] bg-[color:rgba(var(--primary),0.06)] flex justify-between items-center">
+        <span className="text-[color:var(--primary)] font-bold">
           {event.price > 0 ? `$${event.price}` : 'Free'}
         </span>
         <Link 
           to={`/events/${event.id}`} 
-          className="text-sm font-semibold text-gray-900 hover:text-indigo-600 transition-colors"
+          className="text-sm font-semibold text-[color:var(--text-primary)] hover:text-[color:var(--primary)] transition-colors"
         >
           Details &rarr;
         </Link>
